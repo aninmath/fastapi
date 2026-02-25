@@ -38,7 +38,7 @@ def predict_premium(data: InsuranceInput):
 
     try:
 
-        prediction = predict (input_df)
+        prediction = round(float(predict(input_df)), 2)
 
         return JSONResponse(
             status_code=200,
@@ -46,4 +46,4 @@ def predict_premium(data: InsuranceInput):
         )
     except Exception as e:
 
-        return JSONResponse(status_code=500, content=str(e))
+        return JSONResponse(status_code=500, content={"error": str(e)})
